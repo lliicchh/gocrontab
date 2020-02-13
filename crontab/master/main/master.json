@@ -1,0 +1,8 @@
+{
+  "api接口端口": "",
+  "apiPort": "10086",
+  "api接口读超时": "单位：毫秒",
+  "apiReadTimeout": "4000",
+  "api接口写超时": "单位：毫秒",
+  "apiWriteTimeout": "4000"
+}
