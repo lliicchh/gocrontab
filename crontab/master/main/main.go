@@ -3,18 +3,19 @@ package main
 import (
 	"flag"
 	"fmt"
-	"godemo/crontab/master"
+	"gocrontab/crontab/master"
 	"runtime"
 )
 
-var(
+var (
 	confFile string
 )
+
 //解析命令参数
-func initArgs()  {
+func initArgs() {
 	// usage : master -config ./master.json
 	// master -h
-	flag.StringVar(&confFile, "config", "./master.json" ,"指定master.json")
+	flag.StringVar(&confFile, "config", "./master.json", "指定master.json")
 	flag.Parse()
 }
 
@@ -30,7 +31,7 @@ func main() {
 	initEnv()
 
 	// 加载配置
-	if err =master.InitConfig(confFile);err!=nil{
+	if err = master.InitConfig(confFile); err != nil {
 		goto ERR
 	}
 	// 启动api server
