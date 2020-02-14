@@ -1,3 +1,3 @@
 package common
 
-const JOB_SVAE_DIR  = "/crontab/jobs"
+const JOB_SVAE_DIR  = "/crontab/jobs/"

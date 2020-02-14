@@ -3,6 +3,7 @@ package master
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"github.com/coreos/etcd/clientv3"
 	"gocrontab/common"
 	"time"
@@ -56,15 +57,18 @@ func (jobMgr *JobMgr) SaveJob(job *common.Job) (oldJob *common.Job, err error) {
 	)
 
 	jobKey = common.JOB_SVAE_DIR + job.Name
+	fmt.Println(jobKey)
 
 	if jobVal, err = json.Marshal(job); err != nil {
 		return
 	}
 
+	fmt.Println("begin put ")
 	if putResp, err = jobMgr.kv.Put(context.TODO(), jobKey, string(jobVal), clientv3.WithPrevKV()); err != nil {
 		return
 	}
 
+	fmt.Println("put end")
 	if putResp.PrevKv != nil {
 		if err = json.Unmarshal(putResp.PrevKv.Value, &oldJobObj); err != nil {
 			err = nil
