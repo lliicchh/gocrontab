@@ -3,8 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"gocrontab/crontab/master"
+	"gocrontab/master"
 	"runtime"
+	"time"
 )
 
 var (
@@ -39,7 +40,13 @@ func main() {
 	if err = master.InitApiServer(); err != nil {
 		goto ERR
 	}
-	fmt.Println(master.G_config.ApiReadTimeout)
+
+	// 启动JobMgr
+	if err = master.InitJobMgr(); err != nil {
+		goto ERR
+	}
+
+	time.Sleep(30 * time.Second)
 
 	return
 
