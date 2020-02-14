@@ -31,6 +31,7 @@ func main() {
 	initEnv()
 
 	// 加载配置
+	initArgs()
 	if err = master.InitConfig(confFile); err != nil {
 		goto ERR
 	}
