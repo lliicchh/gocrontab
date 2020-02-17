@@ -2,7 +2,6 @@ package master
 
 import (
 	"encoding/json"
-	"fmt"
 	"gocrontab/common"
 	"net"
 	"net/http"
@@ -50,7 +49,6 @@ func handleJobSave(resp http.ResponseWriter, req *http.Request) {
 
 	// 5. 返回正常应答
 	if bytes, err = common.BuildResponse(0, "success", oldJob); err == nil {
-		fmt.Println("write bytes")
 		resp.Write(bytes)
 	}
 
